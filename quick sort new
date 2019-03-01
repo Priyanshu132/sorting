@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+int quicksort(int*,int,int);
+int main()
+{
+    int no_of_terms,i;
+    int *arr;
+    printf("enter the no. of terms");
+    scanf("%d",&no_of_terms);
+    arr=malloc(no_of_terms*sizeof(int));
+    for(i=0;i<no_of_terms;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    quicksort(arr,0,no_of_terms-1);
+    printf("the array is sorted by using quick sort:");
+    for(i=0;i<no_of_terms;i++){
+        printf("%d ",arr[i]);
+    }
+    return 0;
+}
+int quicksort(int *arr,int start,int end){
+    int i,index_count,temp_i,pivot,temp_count;
+    if(start<end){
+    pivot=arr[start];
+    temp_count=end;
+   index_count=end+1;
+    for(i=end;i>start;i--){
+        if(pivot<arr[i]){
+            index_count--;
+            temp_i=arr[i];
+            arr[i]=arr[index_count];
+            arr[index_count]=temp_i;
+        }
+    }
+    for(i=start;i<index_count-1;i++){
+        arr[i]=arr[i+1];
+    }
+    arr[index_count-1]=pivot;}
+    else{
+        return *arr;
+}
+quicksort(arr,0,index_count-2);
+quicksort(arr,index_count,temp_count);
+return *arr;
+    }
