@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+int insertionsort(int *,int);
+int main()
+{
+  int i,no_of_terms,*arr;
+printf("enter the no. of terms");
+scanf("%d",&no_of_terms);
+arr=malloc(no_of_terms*sizeof(int));
+for(i=0;i<no_of_terms;i++){
+    scanf("%d",&arr[i]);
+}   
+insertionsort(arr,no_of_terms);
+printf("the array is sorted by using insertion sort:");
+for(i=0;i<no_of_terms;i++)
+    printf("%d ",arr[i]);
+return 0;
+}
+int insertionsort(int *arr,int no_of_terms)
+{
+    int i,j,temp_i,count,k;
+    for(i=1;i<no_of_terms;i++){
+        count=0;
+        j=i-1;
+        while(j>=0){
+            if(arr[i]<=arr[j]){
+            j--;count++;}
+             else
+                break;
+        }
+    if(count<=0)
+           continue;
+        temp_i=arr[i];
+            for(k=i-1;k>j;k--){
+                arr[k+1]=arr[k];
+            }
+                arr[j+1]=temp_i;
+    }
+    return *arr;
+}
