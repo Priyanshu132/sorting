@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int no_of_terms,i,count=0,search_no;
+    int *arr;
+    printf("enter the no of terms");
+    scanf("%d",&no_of_terms);
+    arr=malloc(no_of_terms*sizeof(int));
+    printf("enter the elements of array");
+    for(i=0;i<no_of_terms;i++){
+        scanf("%d",&arr[i]);
+    }
+    printf("enter the no which you want to search");
+    scanf("%d",&search_no);
+   for(i=0;i<no_of_terms;i++){
+       if(search_no==arr[i]){
+           printf("number is found,");
+           count++;
+       break;}
+       }
+       if(count==0)
+            printf("The number is not founded");
+    return 0;
+   }    
+
