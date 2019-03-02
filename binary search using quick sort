@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdlib.h>
+int sort_array(int *,int,int);
+int main()
+{
+    int no_of_terms,start,mid,end,search_no;
+    int *arr,i;
+    printf("enter the no. of terms in the array ");
+    scanf("%d",&no_of_terms);
+    arr=malloc(no_of_terms*sizeof(int));
+    printf("enter the elements of array");
+    for(i=0;i<no_of_terms;i++){
+    scanf("%d",&arr[i]);}
+    printf("enter the number which you want to be search");
+    scanf("%d",&search_no);
+    sort_array(arr,0,no_of_terms-1);
+   start=0;
+    end=no_of_terms-1;
+    mid=(start+end)/2;
+    while(start<end&&(search_no!=arr[mid])){
+    if(search_no>arr[mid]){
+        start=mid+1;
+              mid=(start+end)/2;
+    }
+    else{
+        end=mid-1;
+        mid=(start+end)/2;
+    }
+    }
+    if(search_no==arr[mid])
+        printf("number is founded.");
+        else
+            printf("number is not found.");
+            return 0;
+    }
+int sort_array(int *arr,int start,int end){
+    int i,index_count,temp_i,pivot,temp_count;
+    if(start<end){
+    pivot=arr[start];
+    temp_count=end;
+   index_count=end+1;
+    for(i=end;i>start;i--){
+        if(pivot<arr[i]){
+            index_count--;
+            temp_i=arr[i];
+            arr[i]=arr[index_count];
+            arr[index_count]=temp_i;
+        }
+    }
+    for(i=start;i<index_count-1;i++){
+        arr[i]=arr[i+1];
+    }
+    arr[index_count-1]=pivot;}
+    else{
+        return *arr;
+    }
+sort_array(arr,0,index_count-2);
+sort_array(arr,index_count,temp_count);
+return *arr;
+    }
